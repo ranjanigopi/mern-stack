@@ -1,19 +1,15 @@
-const http = require('http');
-const router = require('./route');
-const file = require('./file');
+const express = require('express');
 
-router.get('/hello', (req, res) => {
-    res.write('<p>HYYYY</p>');
-    res.end();
-});
+const app = express();
 
-const server = http.createServer((req, res) => {
-    if (req.url === '/') {
-        req.url = '/index.html';
-    }
-    file.handle(req, res, () => {
-        router.handle(req, res);
-    });
-});
+app.use(express.static('./static'));
 
-server.listen(8080);
+app.get('/hello', (req,res) => {
+    res.send('<p>HYYYY</p>');
+})
+
+app.get('/apple', (req,res) => {
+    res.sendFile(__dirname + '/static/second.html');
+})
+
+app.listen(8080);
