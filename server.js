@@ -14,4 +14,4 @@ app.get('/apple', (req, res) => {
     res.sendFile(__dirname + '/static/second.html');
 });
 
-app.listen(8080);
+app.listen(8080, () => console.log('Listening at port: 8080'));

@@ -4,9 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "webpack",
-    "start": "node server.js",
-    "start:client": "webpack-dev-server",
+    "start": "webpack && node server.js",
+    "start:client": "webpack serve",
     "start:server": "nodemon server.js"
   },
   "author": "",
