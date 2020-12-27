@@ -1,0 +1,16 @@
+.label {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    grid-gap: 10px;
+    margin-bottom: 10px;
+}
+
+.text {
+    padding: 5px;
+}
+
+.input {
+    border: none;
+    border-bottom: 1px solid cornflowerblue;
+    padding: 5px;
+}

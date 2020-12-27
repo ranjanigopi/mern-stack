@@ -1,0 +1,24 @@
+.btn {
+    border: none;
+    background: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    height: 1.875em;
+}
+
+.btn + .btn {
+    margin-left: 5px;
+}
+
+.primary {
+    background-color: cornflowerblue;
+    color: white;
+    border: 1px solid cornflowerblue;
+}
+
+.outline {
+    border: 1px solid cornflowerblue;
+    color: cornflowerblue;
+}
