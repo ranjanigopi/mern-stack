@@ -1,17 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 const app = express();
+const staticFilePath = path.join(__dirname, 'static');
 
-app.use(express.static('./static'));
+app.use(express.static(staticFilePath));
 app.use(bodyParser.json());
 
-app.get('/hello', (req, res) => {
-    res.send('<p>HYYYY</p>');
-});
-
-app.get('/apple', (req, res) => {
-    res.sendFile(__dirname + '/static/second.html');
-});
+app.get('/*', (req,res) => {
+    res.sendFile(path.join(staticFilePath, 'index.html'))
+})
 
 app.listen(8080, () => console.log('Listening at port: 8080'));
