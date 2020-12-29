@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const {connect} = require('./api/database');
 
 const app = express();
 const staticFilePath = path.join(__dirname, 'static');
@@ -8,8 +9,12 @@ const staticFilePath = path.join(__dirname, 'static');
 app.use(express.static(staticFilePath));
 app.use(bodyParser.json());
 
-app.get('/*', (req,res) => {
-    res.sendFile(path.join(staticFilePath, 'index.html'))
-})
+app.use('/user', require('./api/routes/user'));
 
-app.listen(8080, () => console.log('Listening at port: 8080'));
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(staticFilePath, 'index.html'));
+});
+
+connect().then(() => {
+    app.listen(8080, () => console.log('Listening at port: 8080'));
+});
